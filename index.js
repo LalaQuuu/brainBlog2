@@ -18,6 +18,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 let posts = [];
 
+
+
 // Route to render the main page
 app.get("/", (req, res) => {
     res.render("index", {

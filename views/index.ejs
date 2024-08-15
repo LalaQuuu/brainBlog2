@@ -2,24 +2,24 @@
 
 <div class="container">
     <div class="col" id="write">
-        <h2>Write</h2>
+        <h2 class="changeC">Write</h2>
         <form action="/submit" method="POST">
             <label for="title"></label>
             <input type="text" id="Title" name="title" placeholder="Title here">
             <label for="blogPost"></label>
             <textarea id="blogPost" name="content" rows="10" cols="30" placeholder="Your thoughts here."></textarea>
-            <input type="submit" id="post" value="Post">
+            <input type="submit" id="post" class="changeC" value="Post">
         </form>
     </div>
 
     <div class="col" id="review">
-        <h2>Review</h2>
-        <div class="reviewBox">
+        <h2 class="changeC">Review</h2>
+        <div class="reviewBox" id="reviewBox">
         <% if (posts.length > 0) { %>
             <% posts.forEach(post => { %>
                 <div class="post">
-                    <h3><%= post.title %></h3>
-                    <p><%= post.content %></p>
+                    <h3 class="changeC"><%= post.title %></h3>
+                    <p class="changeC"><%= post.content %></p>
                 </div>
             <% }); %>
         <% } else { %>
@@ -29,15 +29,15 @@
     </div>
 
     <div class="col" id="read">
-        <h2>Read</h2>
+        <h2 class="changeC">Read</h2>
         
         <% if (posts.length > 0) { %> 
             <% posts.forEach(post => { %>
-                <h3><%= post.title %></h3>
+                <h3 class="changeC"><%= post.title %></h3>
                 <!-- <p><%= post.content %></p> -->
             <% }); %>
         <% } else { %>
-            <p>words appear, when you type there. press enter and dont disappear.</p>
+            <p class="changeC">words appear, when you type there. press enter and dont disappear.</p>
         <% } %> 
     </div>
 </div>
