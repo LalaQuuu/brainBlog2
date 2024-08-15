@@ -1,0 +1,65 @@
+<%- include("partials/header.ejs") %>
+
+<div class="container">
+    <div class="col" id="write">
+        <h2>Write</h2>
+        <form action="/submit" method="POST">
+            <label for="title"></label>
+            <input type="text" id="Title" name="title" placeholder="Title here">
+            <label for="blogPost"></label>
+            <textarea id="blogPost" name="content" rows="10" cols="30" placeholder="Your thoughts here."></textarea>
+            <input type="submit" id="post" value="Post">
+        </form>
+    </div>
+
+    <div class="col" id="review">
+        <h2>Review</h2>
+        <div class="reviewBox">
+        <% if (posts.length > 0) { %>
+            <% posts.forEach(post => { %>
+                <div class="post">
+                    <h3><%= post.title %></h3>
+                    <p><%= post.content %></p>
+                </div>
+            <% }); %>
+        <% } else { %>
+          <% console.log("Soon come") %>   
+        <% } %>
+    </div>
+    </div>
+
+    <div class="col" id="read">
+        <h2>Read</h2>
+        
+        <% if (posts.length > 0) { %> 
+            <% posts.forEach(post => { %>
+                <h3><%= post.title %></h3>
+                <!-- <p><%= post.content %></p> -->
+            <% }); %>
+        <% } else { %>
+            <p>words appear, when you type there. press enter and dont disappear.</p>
+        <% } %> 
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // Step 1: Initialize an empty array to hold the titles
+        const postTitles = [];
+
+        // Step 2: Select all h3 elements within the div with id="read"
+        const posts = document.querySelectorAll('#read h3');
+
+        // Step 3: Iterate over each post and extract the title
+        posts.forEach(post => {
+            const titleText = post.textContent;
+            // Step 4: Add the title to the array
+            postTitles.push(titleText);
+        });
+
+        // Log the array to the console to see the result
+        console.log(postTitles);
+    });
+</script>
+
+<%- include("partials/footer.ejs") %>
